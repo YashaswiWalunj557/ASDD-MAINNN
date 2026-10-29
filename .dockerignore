@@ -1,0 +1,6 @@
+.git
+.vscode
+node_modules
+README.md
+commands-powershell.txt
+k8s

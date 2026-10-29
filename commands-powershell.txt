@@ -1,0 +1,38 @@
+EXPERIMENT 7 — DEPLOY AND MANAGE CONTAINERS USING KUBERNETES
+Run these commands from the project root folder in VS Code PowerShell.
+
+1. Check Docker and kubectl:
+docker --version
+kubectl version --client
+kubectl cluster-info
+
+2. Build the Node.js image:
+docker build -t k8s-node-app:1.0 .
+
+3. Deploy all Kubernetes resources:
+kubectl apply -f k8s/
+
+4. Check status:
+kubectl get deployments
+kubectl get pods
+kubectl get services
+
+5. If a pod is not Running, inspect it:
+kubectl describe pod <POD_NAME>
+kubectl logs <POD_NAME>
+
+6. Test endpoints:
+Start-Process "http://localhost:30000"
+Start-Process "http://localhost:30080"
+
+7. Scale the Node.js deployment:
+kubectl scale deployment/node-app --replicas=2
+kubectl get pods
+kubectl scale deployment/node-app --replicas=1
+
+8. View logs and deployment details:
+kubectl logs deployment/node-app
+kubectl describe deployment node-app
+
+9. Delete the lab resources:
+kubectl delete -f k8s/

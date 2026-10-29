@@ -1,0 +1,40 @@
+Experiment 2: Perform Version Control Operations Using Git
+Step 1: Check Git installation
+git --version
+
+
+Step 2: Create a repository on GitHub
+1. Open GitHub → Click + → New repository.
+2. Enter repository name: git-practical.
+3. Click Create repository and copy the HTTPS URL.
+Step 3: Clone the repository
+git clone https://github.com/YOUR-USERNAME/git-practical.git
+
+
+Step 4: Open the repository folder
+cd git-practical
+
+
+Step 5: Create a file
+Set-Content index.html '<html><body><h1>My Git Practical</h1></body></html>'
+
+
+Step 6: Check repository status
+git status
+
+
+Step 7: Add the file to staging area
+git add .
+
+
+Step 8: Commit the changes
+git commit -m "Added index.html file"
+
+
+Step 9: Push changes to GitHub
+git push origin main
+
+
+Step 10: Verify the result
+git status
+git log --oneline

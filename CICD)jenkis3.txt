@@ -1,0 +1,97 @@
+
+### Procedure
+
+**Step 1: Open Jenkins**
+1. Open a web browser.
+2. Enter `http://localhost:8080`.
+3. Open the Jenkins Dashboard.
+
+**Step 2: Create a Freestyle Project**
+1. Click on **New Item**.
+2. Enter the project name as `MyFirstJob`.
+3. Select **Freestyle project** and click **OK**.
+
+**Step 3: Configure the Build**
+1. Enter the description as `My First Jenkins Job`.
+2. Go to the **Build Steps** section.
+3. Click **Add build step**.
+4. Select **Execute Windows batch command**.
+
+Enter the following command:
+
+```bat
+echo Hello World
+```
+
+5. Click **Save**.
+
+**Step 4: Execute the Job**
+1. Open the `MyFirstJob` project.
+2. Click **Build Now**.
+3. Click the build number under Build History.
+4. Select **Console Output** and verify the result.
+
+Expected output:
+
+```text
+Hello World
+Finished: SUCCESS
+```
+
+**Step 5: Create a Pipeline Job**
+1. Go to the Jenkins Dashboard.
+2. Click **New Item**.
+3. Enter the name as `MyPipeline`.
+4. Select **Pipeline** and click **OK**.
+
+**Step 6: Configure the Pipeline Script**
+1. Scroll down to the **Pipeline** section.
+2. Select **Pipeline script** under Definition.
+3. Paste the following script:
+
+```groovy
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building project...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Testing project...'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying project...'
+            }
+        }
+    }
+}
+```
+
+4. Keep **Use Groovy Sandbox** selected if available.
+5. Click **Save**.
+
+**Step 7: Execute the Pipeline**
+1. Open the `MyPipeline` project.
+2. Click **Build Now**.
+3. Click the latest build number.
+4. Open **Console Output**.
+
+Expected output:
+
+```text
+Building project...
+Testing project...
+Deploying project...
+Finished: SUCCESS
+```
+
+**Step 8: Verify the Result**
+Check that all three stages—Build, Test, and Deploy—execute successfully. If Stage View is available, verify the stage results there.

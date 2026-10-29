@@ -1,0 +1,93 @@
+EXPERIMENT NO. 8
+AUTOMATE APPLICATION TESTING USING GITHUB ACTIONS
+
+STEP 1: Open your project in CMD
+1. Open Command Prompt (CMD).
+2. Type the following command and press Enter:
+
+cd /d "%USERPROFILE%\Downloads\PyBrain_Python_Doubt_Solver_FIXED"
+
+STEP 2: Check the project files
+Run:
+
+dir
+
+Check that your project contains app.py and requirements.txt.
+
+STEP 3: Check Git
+Run these commands:
+
+git --version
+git status
+
+If Git is installed and your project is connected to GitHub, continue.
+
+STEP 4: Create the GitHub Actions workflow folder
+Run these commands one by one:
+
+mkdir .github
+mkdir .github\workflows
+
+If a folder already exists, continue to the next command.
+
+STEP 5: Create the workflow file
+Run:
+
+notepad .github\workflows\deploy.yml
+
+Paste the following code into Notepad:
+
+name: PyBrain CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Check Python Syntax
+        run: python -m compileall -q .
+
+Save the file and close Notepad.
+
+STEP 6: Upload the workflow to GitHub
+Run these commands one by one:
+
+git add .github/workflows/deploy.yml
+git commit -m "Add GitHub Actions workflow"
+git push origin HEAD
+
+STEP 7: Check GitHub Actions
+1. Open your project repository on GitHub.
+2. Click the Actions tab.
+3. Open the PyBrain CI workflow.
+4. Click the latest workflow run.
+5. Check whether all steps show a green tick.
+
+STEP 8: Verify the result
+If the workflow completes successfully, GitHub Actions has automatically tested your project after the code was pushed.
+
+RESULT:
+Application testing was automated using GitHub Actions without Jenkins.
+
+NOTE:
+These steps automate testing, not hosting the Streamlit application. To deploy PyBrain as a live website, you will also need a hosting service such as Render.

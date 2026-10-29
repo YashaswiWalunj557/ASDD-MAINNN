@@ -1,0 +1,10 @@
+{
+  "name": "kubernetes-node-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Small Node.js server for Kubernetes experiment 7",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
